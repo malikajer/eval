@@ -19,6 +19,22 @@
                     <th scope="col"></th>
                 </tr>
                 </thead>
+                <tbody>
+                <c:forEach items="${communes.getContent()}" var="communes">
+                    <tr>
+                        <th scope="row">${communes.nomCommune}</th>
+                        <td>${communes.codeCommuneInsee}</td>
+                        <td>${communes.codePostal}</td>
+                        <td>${communes.libelleAcheminement}</td>
+                        <td>${communes.ligne5}</td>
+                        <td>${communes.latitude}</td>
+                        <td>${communes.longitude}</td>
+
+                        <td><a href="/communes/${communes.id}">Détail</a></td>
+
+                    </tr>
+                </c:forEach>
+                </tbody>
             </table>
         </div>
     </div>
