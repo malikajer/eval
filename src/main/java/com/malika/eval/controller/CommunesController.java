@@ -9,10 +9,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/communes")
@@ -35,4 +38,15 @@ public class CommunesController {
         model.put("communes", communes);
         return "communes/liste";
     }
+
+    @RequestMapping("/{id}")
+    public String getCommunesById(@PathVariable("id")Integer id, Map<String, Object> model){
+        Optional<Communes> communes= communesRepository.findById(id);
+        if (communes.isPresent()) {
+            model.put("id",communes.get());
+            return "communes/detail";
+        }
+        throw new EntityNotFoundException("la communes avec l'identifiant"+ id + "n'a pas été trouvé");
+    }
+
 }
