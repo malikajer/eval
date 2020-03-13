@@ -17,7 +17,7 @@
             </li>
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">3 - Récupérer les Communes par Code Postal</h4>
-                <p class="list-group-item-text">En cliquant <a href="/communes/codePostal/70300">ici</a>, on peut afficher les informations de la Commune qui a pour code postal 70300.</p>
+                <p class="list-group-item-text">En cliquant <a href="/communes/codePostal/7030">ici</a>, on peut afficher les informations de la Commune qui a pour code postal 70300.</p>
             </li>
             <li class="list-group-item">
                 <h4 class="list-group-item-heading">4 - Récupérer les Communes par Nom</h4>
