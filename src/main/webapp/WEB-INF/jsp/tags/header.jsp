@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
+
 <html lang="en" >
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -13,21 +15,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
+                <a href="/" class="navbar-brand">Gestion des communes</a>
             </button>
-            <a href="/" class="navbar-brand">Gestion des communes</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/communes?page=0&size=10&sortProperty=id&sortDirection=ASC" class="nav-link">Liste des communes</a></li>
+                <li class="active"><a href="/" class="nav-link">Page d'accueil</a></li>
             </ul>
-
-            <form class="navbar-form navbar-right" role="search" action="/communes" method="GET">
-                <div class="form-group">
-                    <input name="matricule" class="form-control" placeholder="Rechercher par id" type="text">
-                </div>
-                <button type="submit" class="btn btn-default">Rechercher</button>
-            </form>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/communes?page=0&size=10&sortProperty=nomCommune&sortDirection=ASC" class="nav-link">Liste des communes</a></li>
+            </ul>
         </div>
     </div>
 </nav>
+    <% if(request.getParameter("success") != null) {
+    pageContext.setAttribute("success", request.getParameter("success"));
+}%>
+    <% if (pageContext.findAttribute("success") != null){ %>
+<div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    ${success}
+</div>
+<% } %>
